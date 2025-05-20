@@ -198,18 +198,27 @@ class Game:
         return not any(p in [BLACK_PIECE, BLACK_KING] for row in self.board for p in row) or not any(p in [RED_PIECE, RED_KING] for row in self.board for p in row)
 
     def evaluate_board(self):
-        score = 0
+        red_pawns = 0
+        black_pawns = 0
+        red_kings = 0
+        black_kings = 0
+
         for row in self.board:
             for piece in row:
                 if piece == BLACK_PIECE:
-                    score += 1
+                    black_pawns += 1
                 elif piece == RED_PIECE:
-                    score -= 1
+                    red_pawns += 1
                 elif piece == BLACK_KING:
-                    score += 1.5
+                    black_kings += 1
                 elif piece == RED_KING:
-                    score -= 1.5
+                    red_kings += 1
+
+        # Score basé sur les pions (pions = 1 point, dames = 1.5 points)
+        score = (black_pawns + 1.5 * black_kings) - (red_pawns + 1.5 * red_kings)
+
         return score
+
 
     def get_all_moves(self, color):
         moves = []
