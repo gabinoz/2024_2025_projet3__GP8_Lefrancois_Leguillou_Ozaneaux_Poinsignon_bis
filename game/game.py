@@ -214,10 +214,17 @@ class Game:
                 elif piece == RED_KING:
                     red_kings += 1
 
-        # Score basé sur les pions (pions = 1 point, dames = 1.5 points)
         score = (black_pawns + 1.5 * black_kings) - (red_pawns + 1.5 * red_kings)
 
+        # Bonus fort si l’adversaire a peu de pions
+        red_pieces_total = red_pawns + red_kings
+        max_pieces = 12
+        bonus_capture = (max_pieces - red_pieces_total) * 2  # 2 points par pion capturé manquant
+
+        score += bonus_capture
+
         return score
+
 
 
     def get_all_moves(self, color):
