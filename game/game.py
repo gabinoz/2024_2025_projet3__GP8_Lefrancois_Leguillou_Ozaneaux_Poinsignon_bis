@@ -145,11 +145,13 @@ class Game:
             self.board[row][col] = self.board[from_row][from_col]
             self.board[from_row][from_col] = 0
 
+            # Promotion en roi
             if self.board[row][col] == BLACK_PIECE and row == self.n_squares - 1:
                 self.board[row][col] = BLACK_KING
             elif self.board[row][col] == RED_PIECE and row == 0:
                 self.board[row][col] = RED_KING
 
+            # Capture
             if abs(row - from_row) == 2:
                 cap_row = from_row + (row - from_row) // 2
                 cap_col = from_col + (col - from_col) // 2
@@ -157,8 +159,7 @@ class Game:
 
                 self.move_count = 0
                 self.selected_piece = (row, col)
-                self.available_moves = self.get_available_moves(row, col)
-                self.capture_moves = self.has_capture_moves(row)
+                self.capture_moves = self.has_capture_moves((row, col))
 
                 if self.capture_moves:
                     self.available_moves = self.capture_moves
@@ -169,8 +170,30 @@ class Game:
         else:
             self.selected_piece = None
 
-    def has_capture_moves(self, row):
-        return [move for move in self.available_moves if abs(move[0] - row) == 2]
+
+    def has_capture_moves(self, pos):
+        row, col = pos
+        capture_moves = []
+        piece = self.board[row][col]
+        
+        if piece in [BLACK_PIECE, RED_PIECE]:
+            directions = [1] if piece == BLACK_PIECE else [-1]
+        else:  # Roi noir ou rouge
+            directions = [1, -1]
+
+        for direction in directions:
+            for d_col in [-1, 1]:
+                mid_row, mid_col = row + direction, col + d_col
+                cap_row, cap_col = row + 2 * direction, col + 2 * d_col
+                if 0 <= cap_row < self.n_squares and 0 <= cap_col < self.n_squares:
+                    if self.board[cap_row][cap_col] == 0:
+                        # Il faut qu'il y ait un pion adverse au milieu
+                        mid_piece = self.board[mid_row][mid_col]
+                        if mid_piece != 0 and mid_piece not in [piece, piece + 2]:
+                            capture_moves.append((cap_row, cap_col))
+
+        return capture_moves
+
 
     def change_turn(self):
         self.turn = RED_PIECE if self.turn == BLACK_PIECE else BLACK_PIECE
