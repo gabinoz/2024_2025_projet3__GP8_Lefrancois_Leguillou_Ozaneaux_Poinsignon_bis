@@ -260,7 +260,7 @@ class Game:
             return min_eval, best_move
 
 
-    def play_ai_move(self, depth= 8):
+    def play_ai_move(self, depth= 1):
         eval, best_move = self.minimax(depth, True)
         if best_move:
             (from_row, from_col), (to_row, to_col) = best_move
