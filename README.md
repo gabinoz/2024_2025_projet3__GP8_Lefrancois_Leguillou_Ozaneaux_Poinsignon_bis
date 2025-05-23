@@ -36,19 +36,22 @@ checkers_ai/
 ├── board.py             # Gestion du plateau et des mouvements
 ├── game.py              # Logique de jeu
     ├── minimax.py           # Algorithme Minimax intégré au game.py└── README.md            # Ce fichier
+
 🚀 Installation
 Cloner le dépôt :
 
-
-
-git clone https://github.com/tonpseudo/jeu-dames-python.git
-cd jeu-dames-python
+git clone https://github.com/gabinoz/2024_2025_projet3__GP8_Lefrancois_Leguillou_Ozaneaux_Poinsignon_bis
 
 pip install pygame
+
 
 ▶️ Lancer le jeu
 
 python main.py
+executer le main.py
+
+
+
 🏁 Objectif
 Ce projet a pour but de :
 
@@ -58,8 +61,6 @@ Créer une IA imbattable au jeu de dames
 
 Développer une logique de jeu complexe de bout en bout
 
-📷 Captures d’écran (optionnel)
-Ajoute ici des captures d’écran de ton interface ou de la console en action.
 
 📚 Références
 Algorithme Minimax : https://en.wikipedia.org/wiki/Minimax
