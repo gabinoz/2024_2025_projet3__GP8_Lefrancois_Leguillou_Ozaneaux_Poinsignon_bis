@@ -7,11 +7,11 @@ Joueur humain contre IA
 
 IA avec algorithme Minimax optimisé
 
-Interface graphique (optionnel) ou version console
+Interface graphique basique
 
 Système de promotion en dame, prises multiples, etc.
 
-Niveau de difficulté ajustable (profondeur de l’arbre de recherche)
+Niveau de difficulté ajustable (profondeur de l’arbre de recherche il faut modifier le "depth=..." dans le game.py ligne 263)
 
 🧠 Algorithme IA : Minimax
 Recherche récursive dans l'arbre des coups possibles
@@ -29,36 +29,25 @@ mobilité
 Peut anticiper plusieurs coups à l’avance
 
 📁 Structure du projet
-bash
-Copier
-Modifier
+
 checkers_ai/
 │
 ├── main.py              # Lancement du jeu
 ├── board.py             # Gestion du plateau et des mouvements
 ├── game.py              # Logique de jeu
-├── minimax.py           # Algorithme Minimax + alpha-bêta
-├── ai.py                # Interface IA
-├── gui.py               # Interface graphique (si utilisée)
-└── README.md            # Ce fichier
+    ├── minimax.py           # Algorithme Minimax intégré au game.py└── README.md            # Ce fichier
 🚀 Installation
 Cloner le dépôt :
 
-bash
-Copier
-Modifier
+
+
 git clone https://github.com/tonpseudo/jeu-dames-python.git
 cd jeu-dames-python
-Installer les dépendances (si interface graphique) :
 
-bash
-Copier
-Modifier
 pip install pygame
+
 ▶️ Lancer le jeu
-bash
-Copier
-Modifier
+
 python main.py
 🏁 Objectif
 Ce projet a pour but de :
@@ -80,6 +69,6 @@ Algorithme Minimax : https://en.wikipedia.org/wiki/Minimax
 Règles du jeu de dames : https://fr.wikipedia.org/wiki/Dames
 
 🧑‍💻 Auteur
-Ton Nom / Pseudo
+GP8 - Albert Leguillou - Gabin Ozaneaux - Maxence Lefrançois - Raphaël Poinsignon  
 
-Contact : ton@email.com
+
