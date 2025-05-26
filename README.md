@@ -33,11 +33,11 @@ L’IA utilise **l’algorithme Minimax** pour choisir le meilleur coup selon le
 
 ## 🧱 Architecture du projet
 
-├── main.py # Point d'entrée du programme
-└── game/
-├── init.py # Initialise le package
-├── game.py # Logique du jeu
-└── utilities.py # Fonctions utilitaires
+- ├── main.py # Point d'entrée du programme
+- └── game/
+- ├── init.py # Initialise le package
+- ├── game.py # Logique du jeu
+- └── utilities.py # Fonctions utilitaires
 
 
 ## 🎮 Ce que permet le programme
