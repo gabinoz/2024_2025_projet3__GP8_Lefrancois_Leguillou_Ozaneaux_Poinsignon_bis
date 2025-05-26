@@ -1,75 +1,63 @@
-Ce projet est une implémentation complète du jeu de dames en Python, avec une intelligence artificielle basée sur l'algorithme Minimax (avec élagage alpha-bêta) capable de battre n'importe quel joueur humain.
+# Jeu de Dames avec Intelligence Artificielle
 
-🕹️ Fonctionnalités
-Plateau de dames 8x8 avec gestion complète des règles
+## 🎯 Objectif du programme
 
-Joueur humain contre IA
+Développer un **jeu de dames** en Python, accompagné d'une **IA capable de battre n'importe quel joueur humain**.
 
-IA avec algorithme Minimax optimisé
+## ♟️ Règles du jeu implémenté
 
-Interface graphique basique
+- Damier de **8 x 8 cases**.
+- Chaque joueur commence avec **12 pions**.
+- **Chaque joueur joue un coup par tour**, avec **un seul pion**.
+- Les pions se déplacent **en diagonale**, **vers l'avant**, **sur les cases foncées**.
+- Un pion peut capturer un adversaire en **sautant au-dessus**, si la **case suivante est vide**.
+- **Captures multiples obligatoires** si elles sont possibles après une première capture.
+- Lorsqu’un pion atteint la dernière rangée, il devient une **dame** :
+  - Elle peut se déplacer et capturer **aussi en arrière**.
+  - Les autres règles restent les mêmes.
 
-Système de promotion en dame, prises multiples, etc.
+## 🛠️ Technologies utilisées
 
-Niveau de difficulté ajustable (profondeur de l’arbre de recherche il faut modifier le "depth=..." dans le game.py ligne 263)
+- **Python**
+- **IA avec l'algorithme Minimax**
+- Utilisation ponctuelle de **l'IA générative** pour aider à la conception
 
-🧠 Algorithme IA : Minimax
-Recherche récursive dans l'arbre des coups possibles
+## 🧠 Fonctionnement de l’IA
 
-Évaluation des positions basée sur :
+L’IA utilise **l’algorithme Minimax** pour choisir le meilleur coup selon les critères suivants :
 
-nombre de pions et dames
+- Maximiser la **différence de score** entre l'IA et l’adversaire
+- Évaluation :
+  - 1 point par **pion**
+  - 1,5 point par **dame**
 
-positionnement stratégique
+## 🧱 Architecture du projet
 
-mobilité
-
-Élagage alpha-bêta pour améliorer les performances
-
-Peut anticiper plusieurs coups à l’avance
-
-📁 Structure du projet
-
-checkers_ai/
-│
-├── main.py              # Lancement du jeu
-├── board.py             # Gestion du plateau et des mouvements
-├── game.py              # Logique de jeu
-    ├── minimax.py           # Algorithme Minimax intégré au game.py└── README.md            # Ce fichier
-
-🚀 Installation
-Cloner le dépôt :
-
-git clone https://github.com/gabinoz/2024_2025_projet3__GP8_Lefrancois_Leguillou_Ozaneaux_Poinsignon_bis
-
-pip install pygame
+├── main.py # Point d'entrée du programme
+└── game/
+├── init.py # Initialise le package
+├── game.py # Logique du jeu
+└── utilities.py # Fonctions utilitaires
 
 
-▶️ Lancer le jeu
+## 🎮 Ce que permet le programme
 
-python main.py
-executer le main.py
+- Jouer à un **jeu de dames complet**, codé en Python
+- Affronter une **IA de différents niveaux**
 
+## ⚠️ Problèmes rencontrés
 
+- Tentative de développement initial via **Flask** pour créer une interface graphique, abandonnée par manque de temps
+- **Conflits GitHub** (clashs, commits, création de répertoires inutiles)
+- Difficulté à intégrer **l’apprentissage par renforcement**
+  - Malgré cela, une **IA fonctionnelle** a été implantée
 
-🏁 Objectif
-Ce projet a pour but de :
+## 🚀 Améliorations futures
 
-Mettre en pratique des concepts d’IA (Minimax, heuristiques, élagage)
+- Intégrer **l’apprentissage par renforcement** pour entraîner l’IA
+- Rendre l’IA **plus rapide** et plus performante
+- Ajouter d'autres variantes du **jeu de dames**, voire du **jeu d'échecs**
 
-Créer une IA imbattable au jeu de dames
+---
 
-Développer une logique de jeu complexe de bout en bout
-
-
-📚 Références
-Algorithme Minimax : https://en.wikipedia.org/wiki/Minimax
-
-Élagage Alpha-Bêta : https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
-
-Règles du jeu de dames : https://fr.wikipedia.org/wiki/Dames
-
-🧑‍💻 Auteur
-GP8 - Albert Leguillou - Gabin Ozaneaux - Maxence Lefrançois - Raphaël Poinsignon  
-
-
+Projet réalisé dans le cadre d'un travail collaboratif autour d'un centre d'intérêt commun : **les jeux de stratégie**.
