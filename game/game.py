@@ -57,7 +57,7 @@ class Game:
             for col in range(self.n_squares):
                 if (row + col) % 2 != 0:
                     pygame.draw.rect(
-                        self.window, BLACK,
+                        self.window, BROWN,
                         (col * self.square_size, row * self.square_size, self.square_size, self.square_size)
                     )
         for row in range(self.n_squares):
@@ -67,7 +67,7 @@ class Game:
                     x = col * self.square_size + self.square_size // 2
                     y = row * self.square_size + self.square_size // 2
                     radius = self.square_size // 2 - 10
-                    color = BROWN if piece in [BLACK_PIECE, BLACK_KING] else RED
+                    color = BLACK if piece in [BLACK_PIECE, BLACK_KING] else TAN
                     pygame.draw.circle(self.window, color, (x, y), radius)
 
                     if piece in [BLACK_KING, RED_KING]:
@@ -220,7 +220,7 @@ class Game:
             return True
         return not any(p in [BLACK_PIECE, BLACK_KING] for row in self.board for p in row) or not any(p in [RED_PIECE, RED_KING] for row in self.board for p in row)
 
-    def evaluate_board(self):
+    def evaluate_board(self, capture_bonus=False):
         red_pawns = 0
         black_pawns = 0
         red_kings = 0
@@ -239,14 +239,27 @@ class Game:
 
         score = (black_pawns + 1.5 * black_kings) - (red_pawns + 1.5 * red_kings)
 
-        # Bonus fort si l’adversaire a peu de pions
-        red_pieces_total = red_pawns + red_kings
-        max_pieces = 12
-        bonus_capture = (max_pieces - red_pieces_total) * 2  # 2 points par pion capturé manquant
+        red_total = red_pawns + red_kings
 
-        score += bonus_capture
+        # Bonus offensif constant quand l’adversaire est affaibli
+        if red_total < 5:
+            score += 5
+
+        # Bonus progressif si une capture a été faite ET l'adversaire a peu de pièces
+        if capture_bonus:
+            if red_total == 4:
+                score += 6
+            elif red_total == 3:
+                score += 10
+            elif red_total == 2:
+                score += 15
+            elif red_total == 1:
+                score += 25
+            elif red_total == 0:
+                score += 100  # Bonus victoire anticipée
 
         return score
+
 
 
 
@@ -265,6 +278,15 @@ class Game:
         self.selected_piece = (from_row, from_col)
         self.available_moves = self.get_available_moves(from_row, from_col)
         self.move(to_row, to_col)
+
+        # Prises en chaîne pour l'IA
+        while self.capture_moves:
+            next_capture = self.capture_moves[0]
+            self.selected_piece = (to_row, to_col)
+            self.available_moves = self.capture_moves
+            from_row, from_col = to_row, to_col
+            to_row, to_col = next_capture
+            self.move(to_row, to_col)
 
     def minimax(self, depth, maximizing, alpha=float('-inf'), beta=float('inf')):
         if depth == 0 or self.winner:
@@ -299,13 +321,11 @@ class Game:
             return min_eval, best_move
 
 
-    def play_ai_move(self, depth= 1):
+    def play_ai_move(self, depth=1):
         eval, best_move = self.minimax(depth, True)
         if best_move:
-            (from_row, from_col), (to_row, to_col) = best_move
-            self.selected_piece = (from_row, from_col)
-            self.available_moves = self.get_available_moves(from_row, from_col)
-            self.move(to_row, to_col)
+            self.apply_move(best_move)
+
 
     def run(self):
         run = True
