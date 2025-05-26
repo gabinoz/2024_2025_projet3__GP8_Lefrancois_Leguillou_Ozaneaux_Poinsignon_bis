@@ -1,85 +1,65 @@
-Ce projet est une implémentation complète du jeu de dames en Python, avec une intelligence artificielle basée sur l'algorithme Minimax (avec élagage alpha-bêta) capable de battre n'importe quel joueur humain.
+# Jeu de Dames avec Intelligence Artificielle
 
-🕹️ Fonctionnalités
-Plateau de dames 8x8 avec gestion complète des règles
+## 🎯 Objectif du programme
 
-Joueur humain contre IA
+Développer un **jeu de dames** en Python, accompagné d'une **IA capable de battre n'importe quel joueur humain**.
 
-IA avec algorithme Minimax optimisé
+## ♟️ Règles du jeu implémenté
 
-Interface graphique (optionnel) ou version console
+- Damier de **8 x 8 cases**.
+- Chaque joueur commence avec **12 pions**.
+- **Chaque joueur joue un coup par tour**, avec **un seul pion**.
+- Les pions se déplacent **en diagonale**, **vers l'avant**, **sur les cases foncées**.
+- Un pion peut capturer un adversaire en **sautant au-dessus**, si la **case suivante est vide**.
+- **Captures multiples obligatoires** si elles sont possibles après une première capture.
+- Lorsqu’un pion atteint la dernière rangée, il devient une **dame** :
+  - Elle peut se déplacer et capturer **aussi en arrière**.
+  - Les autres règles restent les mêmes.
+- si un joueur ne plus jouer alors il perd la partie
 
-Système de promotion en dame, prises multiples, etc.
+## 🛠️ Technologies utilisées
 
-Niveau de difficulté ajustable (profondeur de l’arbre de recherche)
+- **Python**
+- **IA avec l'algorithme Minimax**
+- Utilisation ponctuelle de **l'IA générative** pour aider à la conception
 
-🧠 Algorithme IA : Minimax
-Recherche récursive dans l'arbre des coups possibles
+## 🧠 Fonctionnement de l’IA
 
-Évaluation des positions basée sur :
+L’IA utilise **l’algorithme Minimax** pour choisir le meilleur coup selon les critères suivants :
 
-nombre de pions et dames
+- Maximiser la **différence de score** entre l'IA et l’adversaire
+- Évaluation :
+  - 1 point par **pion**
+  - 1,5 point par **dame**
 
-positionnement stratégique
+## 🧱 Architecture du projet
 
-mobilité
+- ├── main.py # Point d'entrée du programme
+- └── game/
+- ├── init.py # Initialise le package
+- ├── game.py # Logique du jeu
+- └── utilities.py # Fonctions utilitaires
 
-Élagage alpha-bêta pour améliorer les performances
 
-Peut anticiper plusieurs coups à l’avance
+## 🎮 Ce que permet le programme
 
-📁 Structure du projet
-bash
-Copier
-Modifier
-checkers_ai/
-│
-├── main.py              # Lancement du jeu
-├── board.py             # Gestion du plateau et des mouvements
-├── game.py              # Logique de jeu
-├── minimax.py           # Algorithme Minimax + alpha-bêta
-├── ai.py                # Interface IA
-├── gui.py               # Interface graphique (si utilisée)
-└── README.md            # Ce fichier
-🚀 Installation
-Cloner le dépôt :
+- Jouer à un **jeu de dames complet**, codé en Python
+- Affronter une **IA imbattable**
 
-bash
-Copier
-Modifier
-git clone https://github.com/tonpseudo/jeu-dames-python.git
-cd jeu-dames-python
-Installer les dépendances (si interface graphique) :
+## ⚠️ Problèmes rencontrés
 
-bash
-Copier
-Modifier
-pip install pygame
-▶️ Lancer le jeu
-bash
-Copier
-Modifier
-python main.py
-🏁 Objectif
-Ce projet a pour but de :
+- Tentative de développement initial via **Flask** pour créer une interface graphique, abandonnée par manque de temps
+- **Conflits GitHub** (clashs, commits, création de répertoires inutiles)
+- Difficulté à intégrer **l’apprentissage par renforcement**
+  - Malgré cela, une **IA fonctionnelle** a été implantée
 
-Mettre en pratique des concepts d’IA (Minimax, heuristiques, élagage)
+## 🚀 Améliorations futures
 
-Créer une IA imbattable au jeu de dames
+- Intégrer **l’apprentissage par renforcement** pour entraîner l’IA
+- Rendre l’IA **plus rapide** et plus performante
+- Ajouter d'autres variantes du **jeu de dames**, voire du **jeu d'échecs**
+- 
 
-Développer une logique de jeu complexe de bout en bout
+---
 
-📷 Captures d’écran (optionnel)
-Ajoute ici des captures d’écran de ton interface ou de la console en action.
-
-📚 Références
-Algorithme Minimax : https://en.wikipedia.org/wiki/Minimax
-
-Élagage Alpha-Bêta : https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
-
-Règles du jeu de dames : https://fr.wikipedia.org/wiki/Dames
-
-🧑‍💻 Auteur
-Ton Nom / Pseudo
-
-Contact : ton@email.com
+Projet réalisé dans le cadre d'un travail collaboratif autour d'un centre d'intérêt commun : **les jeux de stratégie**.
