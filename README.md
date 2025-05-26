@@ -15,6 +15,7 @@ Développer un **jeu de dames** en Python, accompagné d'une **IA capable de bat
 - Lorsqu’un pion atteint la dernière rangée, il devient une **dame** :
   - Elle peut se déplacer et capturer **aussi en arrière**.
   - Les autres règles restent les mêmes.
+- si un joueur ne plus jouer alors il perd la partie
 
 ## 🛠️ Technologies utilisées
 
@@ -43,7 +44,7 @@ L’IA utilise **l’algorithme Minimax** pour choisir le meilleur coup selon le
 ## 🎮 Ce que permet le programme
 
 - Jouer à un **jeu de dames complet**, codé en Python
-- Affronter une **IA de différents niveaux**
+- Affronter une **IA imbattable**
 
 ## ⚠️ Problèmes rencontrés
 
@@ -57,6 +58,7 @@ L’IA utilise **l’algorithme Minimax** pour choisir le meilleur coup selon le
 - Intégrer **l’apprentissage par renforcement** pour entraîner l’IA
 - Rendre l’IA **plus rapide** et plus performante
 - Ajouter d'autres variantes du **jeu de dames**, voire du **jeu d'échecs**
+- 
 
 ---
 
